@@ -173,22 +173,7 @@ define(function (require, exports, module) {
     _canSignIn () {
       // Only users that are not signed in can do so.
       return ! this._isSignedIn() &&
-               this._hasWebChannelSupport();
-    },
-
-    /**
-     * Check if the current browser has web channel support.
-     *
-     * @returns {Boolean}
-     * @private
-     */
-    _hasWebChannelSupport () {
-      const uap = this.getUserAgent();
-      const browserVersion = uap.browser.version;
-
-      // WebChannels were introduced in Fx Desktop 40 and Fennec 43.
-      return ((uap.isFirefoxDesktop() && browserVersion >= 40) ||
-              (uap.isFirefoxAndroid() && browserVersion >= 43));
+               this.getUserAgent()._hasWebChannelSupport();
     },
 
     /**
