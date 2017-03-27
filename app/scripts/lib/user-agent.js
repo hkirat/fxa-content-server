@@ -67,26 +67,26 @@ define(function (require, exports, module) {
       },
 
       /**
-       * Check if the current browser has web channel support.
-       *
-       * @returns {Boolean}
-       * @private
-       */
-      _hasWebChannelSupport () {
-        const browserVersion = uap.browser.version;
-
-        // WebChannels were introduced in Fx Desktop 40 and Fennec 43.
-        return ((uap.isFirefoxDesktop() && browserVersion >= 40) ||
-                (uap.isFirefoxAndroid() && browserVersion >= 43));
-      },
-
-      /**
        * Check if the browser is Firefox desktop
        *
        * @returns {Boolean}
        */
       isFirefoxDesktop () {
         return this.isFirefox() && ! this.isFirefoxIos() && ! this.isFirefoxAndroid();
+      },
+
+      /**
+       * Check if the current browser has web channel support.
+       *
+       * @returns {Boolean}
+       * @private
+       */
+      hasWebChannelSupport () {
+        const browserVersion = uap.browser.version;
+
+        // WebChannels were introduced in Fx Desktop 40 and Fennec 43.
+        return ((uap.isFirefoxDesktop() && browserVersion >= 40) ||
+                (uap.isFirefoxAndroid() && browserVersion >= 43));
       },
 
       /**

@@ -177,8 +177,8 @@ define(function (require, exports, module) {
         shouldFocusPassword: autofocusEl === 'password',
         showSyncSuggestion: this.isSyncSuggestionEnabled()
       };
-      if (this.getUserAgent()._hasWebChannelSupport()) {
-        context.escapedSyncSuggestionUrl = encodeURI('https://accounts.firefox.com/signup?service=sync&context=fx_desktop_v3&entrypoint=uitour');
+      if (this.getUserAgent().hasWebChannelSupport()) {
+        context.escapedSyncSuggestionUrl = encodeURI('/signup?service=sync&context=fx_desktop_v3&entrypoint=uitour');
       } else {
         context.escapedSyncSuggestionUrl = encodeURI(
                 'https://mozilla.org/firefox/sync?' +

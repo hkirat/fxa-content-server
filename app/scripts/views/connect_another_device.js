@@ -173,7 +173,7 @@ define(function (require, exports, module) {
     _canSignIn () {
       // Only users that are not signed in can do so.
       return ! this._isSignedIn() &&
-               this.getUserAgent()._hasWebChannelSupport();
+               this.getUserAgent().hasWebChannelSupport();
     },
 
     /**
