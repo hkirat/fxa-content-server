@@ -665,10 +665,13 @@ define(function (require, exports, module) {
               sandbox.stub(coppa, 'hasValue', function () {
                 return false;
               });
-              sinon.stub(view, 'showValidationError', function () { });
               return view.submit()
                 .fail(function (err) {
-                  failed = err;
+                  if (AuthErrors.is(err, 'AGE_REQUIRED')) {
+                    this.showValidationError(this.$('#age'), err);
+                    return;
+                  }
+                  throw err;
                 });
             });
 
@@ -689,10 +692,6 @@ define(function (require, exports, module) {
 
               testExpectTriggered(0, 'form.enabled');
               testExpectTriggered(1, 'signup.submit');
-            });
-
-            it('display an error message', function () {
-              assert.isTrue(view.showValidationError.called);
             });
           });
 
